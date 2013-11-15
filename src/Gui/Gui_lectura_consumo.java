@@ -8,9 +8,12 @@ import Control.CtrLecturaConsumos;
 import Modelos.Consumos;
 import Modelos.ConsumosDAO;
 import Modelos.Usuarios;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +28,19 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
      */
     public Gui_lectura_consumo() {
         initComponents();
+        consumo_capturado.setEditable(false);
+        
+        centrarform();
+        
     }
+ public  void centrarform(){
+Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+Dimension frame =this.getSize();
+setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2));
+}
+
+
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +64,7 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
         lectura_anterior = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         Actualizar = new javax.swing.JButton();
-        consumo_actual = new javax.swing.JTextField();
+        consumo_capturado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +87,8 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
         jLabel1.setForeground(new java.awt.Color(255, 0, 51));
         jLabel1.setText("Codigo Vivienda");
 
+        direccion_vivienda.setEditable(false);
+        direccion_vivienda.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         direccion_vivienda.setName("direccion_vivienda"); // NOI18N
         direccion_vivienda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,11 +98,16 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
 
         codigo_vivienda.setName("codigo_vivienda"); // NOI18N
 
+        consumo_mes.setEditable(false);
+        consumo_mes.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         consumo_mes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consumo_mesActionPerformed(evt);
             }
         });
+
+        lectura_anterior.setEditable(false);
+        lectura_anterior.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
 
         jButton2.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
         jButton2.setText("Buscar");
@@ -138,8 +160,7 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         Actualizar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
@@ -159,21 +180,22 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
                 .addGap(21, 21, 21)
                 .addComponent(jLabel6)
                 .addGap(28, 28, 28)
-                .addComponent(consumo_actual, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                .addGap(75, 75, 75)
+                .addComponent(consumo_capturado, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addGap(74, 74, 74)
                 .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(consumo_actual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Actualizar)))
+                    .addComponent(consumo_capturado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Actualizar)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,9 +206,7 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -204,14 +224,17 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
              ConsumosDAO cDAO = new ConsumosDAO();
              Integer codigo=  Integer.parseInt(codigo_vivienda.getText());
                      c  = CLC.getPk(codigo);
-            if (c.equals(null)){
+            if (c == null){
                  JOptionPane.showMessageDialog(null,"CLIENTE NO EXISTE");
             }
+            else {
+            consumo_capturado.setEditable(true);
             codigo_vivienda.setText(Integer.toString(c.getCodigo_vivienda()));
             direccion_vivienda.setText(c.getDireccion_vivienda());
             lectura_anterior.setText(Integer.toString(c.getLectura_anterior()));
             consumo_mes.setText(Integer.toString(c.getConsumo_mes()));
                         // converti a   de integer a cadena
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -224,16 +247,25 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
     }//GEN-LAST:event_consumo_mesActionPerformed
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-//  Consumos c = new Consumos();
-//       Integer codigo = codigo_vivienda.getText();
-//        c.set(txtUserName.getText());
-//        c.setPassword(txtPassword.getText());
-//        c.setApellidos(txtApellidos.getText());
-//        c.setNombre(txtNombre.getText());
-//        
-//        String msg=crU.insert(u);
-//        JOptionPane.showMessageDialog(this, msg);
-                                              
+         
+        if (consumo_capturado.getText().equals("") || (Integer.parseInt(consumo_capturado.getText()) < Integer.parseInt(lectura_anterior.getText()))  ){
+             JOptionPane.showMessageDialog(null,"DIGITE CONSUMO ACTUAL  VIVIENDA");
+        }
+        else{
+        Consumos c = new Consumos();
+         Integer cons_capturado = Integer.parseInt(consumo_capturado.getText()); 
+         Integer lect_anterior=Integer.parseInt(lectura_anterior.getText());
+         Integer cons_mes = Integer.parseInt(consumo_mes.getText());
+         
+         cons_mes =  cons_capturado -  lect_anterior;
+         lect_anterior = cons_capturado;
+         
+         Integer codigo = Integer.parseInt(codigo_vivienda.getText());
+        c.setLectura_anterior(lect_anterior);
+        c.setConsumo_mes(cons_mes);
+        String msg=CLC.update(codigo,c);
+        JOptionPane.showMessageDialog(this, msg);
+        }                                      
         // TODO add your handling code here:
     }//GEN-LAST:event_ActualizarActionPerformed
 
@@ -274,7 +306,7 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
     private javax.swing.JTextField codigo_vivienda;
-    private javax.swing.JTextField consumo_actual;
+    private javax.swing.JTextField consumo_capturado;
     private javax.swing.JTextField consumo_mes;
     private javax.swing.JTextField direccion_vivienda;
     private javax.swing.JButton jButton2;

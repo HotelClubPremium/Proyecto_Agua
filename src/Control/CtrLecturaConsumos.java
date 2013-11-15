@@ -40,10 +40,9 @@ public class CtrLecturaConsumos {
      public String update( Integer codigo_vivienda, Consumos c){
          try {
             conexion = new db();
-           ConsumosDAO cDao= new ConsumosDAO(conexion);
+            ConsumosDAO cDao= new ConsumosDAO(conexion);
             cDao.update(codigo_vivienda,c);
-        
-            return "Guardado la lectura Satisfactoriamente por migurl";
+            return "Guardada lectura Satisfactoriamente";
         } catch (SQLException ex) {
             Logger.getLogger(CtrLecturaConsumos.class.getName()).log(Level.SEVERE, null, ex);
             return ex.getMessage();
