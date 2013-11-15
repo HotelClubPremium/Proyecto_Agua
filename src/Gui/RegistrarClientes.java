@@ -327,8 +327,9 @@ public class RegistrarClientes extends javax.swing.JFrame {
            // c  = crC.getPk(txtCedula.getText());
             
             c  = crC.getPk(cedula);
-            if (c.equals(null)){
+            if (c == null){
                  JOptionPane.showMessageDialog(null,"No Existe El Cliente");
+                 
             }
             txtNombre.setText(c.getNombre());
             txtApellido.setText(c.getApellido());
