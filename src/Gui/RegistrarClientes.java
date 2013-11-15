@@ -316,17 +316,25 @@ public class RegistrarClientes extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null,"Debe Escribir Una Cedula");
         }
         else{
-           /* Clientes c=new Clientes();
+            Clientes c=new Clientes();
             ClientesDAO cDAO=new ClientesDAO();
-            c=cDAO.Buscar(txtCedula.getText());
+            //c=cDAO.Buscar(txtCedula.getText());
+            
+           // Integer codigo=  Integer.parseInt(txtCedula.getText());
+                    // c  = crC.getPk(codigo);
+            
+            String cedula=txtCedula.getText();
+           // c  = crC.getPk(txtCedula.getText());
+            
+            c  = crC.getPk(cedula);
             if (c.equals(null)){
                  JOptionPane.showMessageDialog(null,"No Existe El Cliente");
             }
             txtNombre.setText(c.getNombre());
             txtApellido.setText(c.getApellido());
             txtDireccion_C.setText(c.getDireccion());
+            txtEmail.setText(c.getEmail());
             txtTelefono.setText(c.getTelefono());
-            txtEmail.setText(c.getEmail());*/
                         
         }
     }//GEN-LAST:event_btn_BuscarActionPerformed
