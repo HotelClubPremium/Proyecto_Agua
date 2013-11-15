@@ -32,7 +32,7 @@ public class CtrPagos {
         Conceptos_Admin ca=new Conceptos_Admin();
         Conceptos_AdminDAO caDao=new Conceptos_AdminDAO();
         
-        c=cDao.Buscar(Vivienda);
+//        c=cDao.Buscar(Vivienda);
         if (c==null){
             return 0;
         }
