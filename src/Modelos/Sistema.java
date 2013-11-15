@@ -8,7 +8,7 @@ public class Sistema {
       private ArrayList<Clientes>lstClientes= new ArrayList<>();
       private ArrayList<Viviendas>lstViviendas= new ArrayList<>();
       private ArrayList<Conceptos_Admin>lstConceptos_Adm= new ArrayList<>();
-      private ArrayList<Consumos>lstConsumos= new ArrayList<>();
+     
       private ArrayList<HistorialPagos>lstHistorialPagos= new ArrayList<>();
       
   
@@ -59,9 +59,7 @@ public class Sistema {
       public  ArrayList<Conceptos_Admin> getLstConceptos_Admin (){
      return lstConceptos_Adm;
  }
-      public  ArrayList<Consumos> getLstConsumos (){
-     return lstConsumos;
- }
+     
       public  ArrayList<HistorialPagos> getLstHistorialPagos (){
      return lstHistorialPagos;
  }

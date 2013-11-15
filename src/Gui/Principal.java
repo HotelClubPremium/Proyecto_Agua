@@ -197,7 +197,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        new Lectura_Consumo().setVisible(true);
+        new Gui_lectura_consumo().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
