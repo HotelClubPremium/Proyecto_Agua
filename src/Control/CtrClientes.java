@@ -55,7 +55,7 @@ public class CtrClientes {
         }
         
         
-        
+      
     }
     private boolean esApellidoValido(String apellidos) {
         return apellidos.trim().length()>0;
@@ -66,6 +66,28 @@ public class CtrClientes {
     public boolean esUsernameValido(String userName) {
         return userName.trim().length()>1 && userName.trim().length()<8;
     }
+    
+    
+    
+    
+    
+    
+       public Clientes getPk(String cedula){
+         try {
+              
+            conexion = new db();
+            Clientes c= new Clientes();
+           ClientesDAO cDao= new ClientesDAO(conexion);
+           c= cDao.getPk(cedula);
+            return c ;
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrClientes.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+            
+        }
+         
+         
+     }
 }
 
     
