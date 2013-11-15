@@ -79,7 +79,7 @@ public class CtrClientes {
             Clientes c= new Clientes();
            ClientesDAO cDao= new ClientesDAO(conexion);
            c= cDao.getPk(cedula);
-            return c ;
+            return c;
         } catch (SQLException ex) {
             Logger.getLogger(CtrClientes.class.getName()).log(Level.SEVERE, null, ex);
             return null;
