@@ -49,6 +49,8 @@ public class ClientesDAO {
     String msg;
     boolean lError;
     private db conexion;
+
+   
     public db getConexion() {
         return conexion;
     }
@@ -57,6 +59,9 @@ public class ClientesDAO {
     }
     public ClientesDAO(db conexion) {
         this.setConexion(conexion);
+    }
+     public ClientesDAO(){
+        
     }
     
     public boolean insert(Clientes c) throws SQLException {
@@ -92,11 +97,11 @@ public class ClientesDAO {
         return lst;
     }
 
-    public Clientes getPk(String userName) throws SQLException {
+    public Clientes getPk(String cedula) throws SQLException {
         Clientes c=null;
-        String sql = "select * from Usuarios where UserName=? ";
+        String sql = "select * from clientes where cedula=? ";
         java.sql.PreparedStatement pst = conexion.getConnection().prepareStatement(sql);
-        pst.setString(1, userName);
+        pst.setString(1, cedula);
         ResultSet rs = conexion.Query(pst);
         lError = true;
         if (rs.next()) {
@@ -140,7 +145,8 @@ public class ClientesDAO {
 
     private Clientes MapearObjeto(ResultSet rs) throws SQLException {
         Clientes c = new Clientes();
-       c.setCedula(rs.getString("cedula"));
+      // c.setCedula(rs.getString("cedula"));
+        c.setCedula(rs.getString("cedula"));
         c.setNombre(rs.getString("nombre"));
         c.setApellido(rs.getString("apellido"));
         c.setDireccion(rs.getString("direccion"));
