@@ -5,6 +5,9 @@
 package Gui;
 
 import Modelos.Sistema;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,10 +16,26 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends javax.swing.JFrame {
  Sistema s=Sistema.getInstancia();
+    private boolean convertido;
    
  public Principal() {
         initComponents();
+        java.util.Date fechaActual = new java.util.Date(); //Fecha actual del sistema
+        fecha();
+        
+
     }
+ public  void fecha(){
+     Date date = new Date();
+      DateFormat fecha = new SimpleDateFormat("yyyy/MM/dd");
+	String	convertido = fecha.format(date);
+        labelfecha.setText(convertido);
+        
+        DateFormat hora = new SimpleDateFormat("HH:mm:ss");
+	String	convertido2 = hora.format(date);
+	 labelhora.setText(convertido2);
+		
+ }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,6 +56,12 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu11 = new javax.swing.JMenu();
+        jMenu12 = new javax.swing.JMenu();
+        labelfecha = new javax.swing.JLabel();
+        labelhora = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -71,22 +96,38 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu6.setText("jMenu6");
 
+        jMenuItem11.setText("jMenuItem11");
+
+        jMenu11.setText("File");
+        jMenuBar3.add(jMenu11);
+
+        jMenu12.setText("Edit");
+        jMenuBar3.add(jMenu12);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        labelfecha.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
+        labelfecha.setText("Fecha:  ");
+
+        labelhora.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
+        labelhora.setText("Hora :");
+
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
+            .addGap(0, 499, Short.MAX_VALUE)
         );
 
+        jMenu3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jMenu3.setText("Usuarios");
+        jMenu3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem6.setText("Nuevos");
@@ -99,7 +140,9 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu3);
 
+        jMenu4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jMenu4.setText("Clientes");
+        jMenu4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItem7.setText("Nuevos");
@@ -157,11 +200,22 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelhora)
+                    .addComponent(labelfecha))
+                .addContainerGap(730, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelhora))
         );
 
         pack();
@@ -243,6 +297,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -253,8 +309,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -264,5 +322,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelfecha;
+    private javax.swing.JLabel labelhora;
     // End of variables declaration//GEN-END:variables
 }

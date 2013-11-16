@@ -80,7 +80,7 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registros de Consumos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
 
-        jLabel6.setText("Lectura Consumo Actual");
+        jLabel6.setText("Consumo Actual Medidor");
 
         jPanel2.setBackground(new java.awt.Color(51, 204, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informacion Vivienda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
@@ -188,7 +188,7 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
                 .addGap(21, 21, 21)
                 .addComponent(jLabel6)
                 .addGap(28, 28, 28)
-                .addComponent(consumo_capturado, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addComponent(consumo_capturado, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                 .addGap(74, 74, 74)
                 .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -201,7 +201,7 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(consumo_capturado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Actualizar)
+                    .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11))
         );
