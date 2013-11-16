@@ -28,9 +28,10 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
      */
     public Gui_lectura_consumo() {
         initComponents();
-        consumo_capturado.setEditable(false);
-        
         centrarform();
+        consumo_capturado.setEditable(false);
+        limpiarCajas();
+        
         
     }
  public  void centrarform(){
@@ -38,9 +39,14 @@ Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
 Dimension frame =this.getSize();
 setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2));
 }
-
-
  
+ public void limpiarCajas(){
+            consumo_capturado.setText(" ");
+            codigo_vivienda.setText(" ");
+            direccion_vivienda.setText(" ");
+            lectura_anterior.setText(" ");
+            consumo_mes.setText("");
+ }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -226,6 +232,7 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
                      c  = CLC.getPk(codigo);
             if (c == null){
                  JOptionPane.showMessageDialog(null,"CLIENTE NO EXISTE");
+                 limpiarCajas();
             }
             else {
             consumo_capturado.setEditable(true);
@@ -265,6 +272,7 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
         c.setConsumo_mes(cons_mes);
         String msg=CLC.update(codigo,c);
         JOptionPane.showMessageDialog(this, msg);
+        limpiarCajas();
         }                                      
         // TODO add your handling code here:
     }//GEN-LAST:event_ActualizarActionPerformed
