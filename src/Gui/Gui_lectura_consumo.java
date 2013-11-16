@@ -41,11 +41,13 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
 }
  
  public void limpiarCajas(){
-            consumo_capturado.setText(" ");
-            codigo_vivienda.setText(" ");
-            direccion_vivienda.setText(" ");
-            lectura_anterior.setText(" ");
-            consumo_mes.setText("");
+            consumo_capturado.setText(null);
+            codigo_vivienda.setText(null);
+            direccion_vivienda.setText(null);
+            lectura_anterior.setText(null);
+            consumo_mes.setText(null);
+            consumo_capturado.setEditable(false);
+ 
  }
 
     /**
@@ -240,7 +242,9 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
             direccion_vivienda.setText(c.getDireccion_vivienda());
             lectura_anterior.setText(Integer.toString(c.getLectura_anterior()));
             consumo_mes.setText(Integer.toString(c.getConsumo_mes()));
-                        // converti a   de integer a cadena
+            consumo_capturado.setEditable(true);
+             
+            // converti a   de integer a cadena
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
