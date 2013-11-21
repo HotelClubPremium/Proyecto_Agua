@@ -86,6 +86,25 @@ private Integer Ultimo;
         return userName.trim().length()>1 && userName.trim().length()<8;
     }
     
+      public Viviendas getPk(String codigo){
+         try {
+              
+            conexion = new db();
+            Viviendas v= new Viviendas();
+           ViviendasDAO vDao= new ViviendasDAO(conexion);
+           v= vDao.getPk(codigo);
+            return v;
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrViviendas.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+            
+        }
+         
+         
+     }
+
+    
+    
     
      
 
