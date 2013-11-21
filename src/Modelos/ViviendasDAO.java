@@ -37,6 +37,8 @@ public class ViviendasDAO {
     String msg;
     boolean lError;
     private db conexion;
+
+   
     public db getConexion() {
         return conexion;
     }
@@ -46,11 +48,15 @@ public class ViviendasDAO {
     public ViviendasDAO(db conexion) {
         this.setConexion(conexion);
     }
+     public ViviendasDAO(){
+        
+    }
+    
     
     public boolean insert(Viviendas v) throws SQLException {
         //Insertar en el Sistema de Base de Datos
         boolean result = false;
-        String sql = "insert into viviendas (cod_vivienda,direccion,estrato,barrio) values (?,?,?,?)";
+        String sql = "insert into viviendas (codigo,direccion,estrato,barrio) values (?,?,?,?)";
         java.sql.PreparedStatement pst = conexion.getConnection().prepareStatement(sql);
         pst.setString(1, v.getCodigo());
         pst.setString(2, v.getDireccion());
@@ -78,11 +84,11 @@ public class ViviendasDAO {
         return lst;
     }
 
-    public Viviendas getPk(String userName) throws SQLException {
+    public Viviendas getPk(String codigo) throws SQLException {
         Viviendas v=null;
-        String sql = "select * from Usuarios where UserName=? ";
+        String sql = "select * from viviendas where codigo=? ";
         java.sql.PreparedStatement pst = conexion.getConnection().prepareStatement(sql);
-        pst.setString(1, userName);
+        pst.setString(1, codigo);
         ResultSet rs = conexion.Query(pst);
         lError = true;
         if (rs.next()) {
@@ -126,7 +132,7 @@ public class ViviendasDAO {
 
     private Viviendas MapearObjeto(ResultSet rs) throws SQLException {
         Viviendas v = new Viviendas();
-       v.setCodigo(rs.getString("cod_vivienda"));
+       v.setCodigo(rs.getString("codigo"));
         v.setDireccion(rs.getString("direccion"));
         v.setEstrato(rs.getString("estrato"));
         v.setBarrio(rs.getString("barrio"));
