@@ -7,13 +7,29 @@ import javax.swing.JOptionPane;
 import Modelos.Clientes;
 import Modelos.Viviendas;
 import Modelos.ClientesDAO;
+import Modelos.ViviendasDAO;
 
 public class RegistrarClientes extends javax.swing.JFrame {
 
     CtrViviendas crV=new CtrViviendas();
      CtrClientes crC=new CtrClientes(); 
-    private Integer ultimoregistro;
+   /* private Integer ultimoregistro;*/
     
+    public void limpiarcajas(){
+            txtCedula.setText(null);
+            txtNombre.setText(null);
+            txtApellido.setText(null);
+            txtEmail.setText(null);
+            txtTelefono.setText(null);
+            txtDireccion_C.setText(null);
+            txtCodigo.setText(null);
+            txtDireccion_V.setText(null);
+            txtBarrio.setText(null);
+            txtEstrato.setText(null);
+           
+           /* txtDireccion_C.setEditable(false);*/
+ 
+ }
     
     
     public RegistrarClientes() {
@@ -52,7 +68,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
         btn_Guardar = new javax.swing.JButton();
         btn_Cancelar = new javax.swing.JButton();
         btn_Salir = new javax.swing.JButton();
-        lb_Codigo = new javax.swing.JLabel();
+        btn_actualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -224,7 +240,13 @@ public class RegistrarClientes extends javax.swing.JFrame {
             }
         });
 
-        lb_Codigo.setText("jLabel2");
+        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resourse/Floppy-Small-icon.png"))); // NOI18N
+        btn_actualizar.setText("actualizar");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,14 +259,14 @@ public class RegistrarClientes extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lb_Codigo)
-                .addGap(128, 128, 128)
+                .addGap(43, 43, 43)
                 .addComponent(btn_Guardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(46, 46, 46)
                 .addComponent(btn_Cancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(47, 47, 47)
                 .addComponent(btn_Salir)
+                .addGap(48, 48, 48)
+                .addComponent(btn_actualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -259,7 +281,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                     .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb_Codigo))
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -281,7 +303,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
             c.setTelefono(txtTelefono.getText());
             String msg=crC.insert(c);   /* ese el u de ctrclientes*/
             
-        JOptionPane.showMessageDialog(this,msg);
+       // JOptionPane.showMessageDialog(this,msg);
         
          Viviendas v=new Viviendas();
            v.setCodigo(txtCodigo.getText());
@@ -301,7 +323,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
     private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
-       // Limpiar();
+       limpiarcajas();
 
     }//GEN-LAST:event_btn_CancelarActionPerformed
 
@@ -312,37 +334,94 @@ public class RegistrarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
-        if (txtCedula.getText().equals("")){
-             JOptionPane.showMessageDialog(null,"Debe Escribir Una Cedula");
+        if (txtCedula.getText().equals("")  /*txtCodigo.getText().equals("")*/){
+             JOptionPane.showMessageDialog(null,"Debe Escribir Una Cedula o codigo de vivienda");
         }
         else{
             Clientes c=new Clientes();
             ClientesDAO cDAO=new ClientesDAO();
+            Viviendas v=new Viviendas();
+            ViviendasDAO vDAO=new ViviendasDAO();
             //c=cDAO.Buscar(txtCedula.getText());
             
            // Integer codigo=  Integer.parseInt(txtCedula.getText());
                     // c  = crC.getPk(codigo);
             
             String cedula=txtCedula.getText();
+            String codigo=txtCodigo.getText();
+            
            // c  = crC.getPk(txtCedula.getText());
             
             c  = crC.getPk(cedula);
-            if (c == null){
+            v = crV.getPk(codigo);
+           
+            if (c == null ){
                  JOptionPane.showMessageDialog(null,"No Existe El Cliente");
                  
             }
+            else{
             txtNombre.setText(c.getNombre());
             txtApellido.setText(c.getApellido());
             txtDireccion_C.setText(c.getDireccion());
             txtEmail.setText(c.getEmail());
             txtTelefono.setText(c.getTelefono());
+              txtCodigo.setText(v.getCodigo());
+            txtDireccion_V.setText(v.getDireccion());
+            txtEstrato.setText(v.getEstrato());
+            txtBarrio.setText(v.getBarrio());}
+            
+            
+            if ( v == null ){
+                 JOptionPane.showMessageDialog(null,"No Existe  vivienda");
+                 
+            }
+            else{
+           
+              txtCodigo.setText(v.getCodigo());
+            txtDireccion_V.setText(v.getDireccion());
+            txtEstrato.setText(v.getEstrato());
+            txtBarrio.setText(v.getBarrio());}
+            
+            
                         
         }
+
+
     }//GEN-LAST:event_btn_BuscarActionPerformed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        if (txtCedula.getText().equals("") || txtNombre.getText().equals("")   ){
+             JOptionPane.showMessageDialog(null,"DIGITE CONSUMO ACTUAL  VIVIENDA");
+        }
+        else{
+        Clientes c = new Clientes();
+         /*Integer cons_capturado = Integer.parseInt(consumo_capturado.getText()); 
+         Integer lect_anterior=Integer.parseInt(lectura_anterior.getText());
+         Integer cons_mes = Integer.parseInt(consumo_mes.getText());*/
+         
+      
+          String cedula=txtCedula.getText();
+         
+         c.setCedula(txtCedula.getText());
+            c.setNombre(txtNombre.getText());
+            c.setApellido(txtApellido.getText());
+            c.setEmail(txtEmail.getText());
+            c.setDireccion(txtDireccion_C.getText());
+            c.setTelefono(txtTelefono.getText());
+            String msg=crC.update(cedula,c); 
+         
+         /*Integer codigo = Integer.parseInt(codigo_vivienda.getText());
+        c.setLectura_anterior(lect_anterior);
+        c.setConsumo_mes(cons_mes);
+        String msg=CLC.update(codigo,c);*/
+        JOptionPane.showMessageDialog(this, msg);
+        limpiarcajas();
+        }           // TODO add your handling code here:
+    }//GEN-LAST:event_btn_actualizarActionPerformed
 
      void Ultimo(){
       //  ultimoregistro=crV.UltimoRegistro();
-        lb_Codigo.setText(String.valueOf(ultimoregistro));
+       // lb_Codigo.setText(String.valueOf(ultimoregistro));
     }
     
     /**
@@ -387,6 +466,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private javax.swing.JButton btn_Cancelar;
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Salir;
+    private javax.swing.JButton btn_actualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -399,7 +479,6 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lb_Codigo;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBarrio;
     private javax.swing.JTextField txtCedula;

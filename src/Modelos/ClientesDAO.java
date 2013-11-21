@@ -112,17 +112,18 @@ public class ClientesDAO {
         return c;
     }
 
-    public void update(String pk,Usuarios u) throws SQLException {
+    public void update(String cedula,Clientes c) throws SQLException {
         // actualizar objeto de la lista
         boolean result = false;
-        String sql = "update Usuarios set username= ?, nombre=?,apellidos=?,email=?,password=? where username=?";
+        String sql = "update clientes set cedula= ?, nombre=?,apellido=?,direccion=?,telefono=?,email=? where cedula=?";
 	java.sql.PreparedStatement pst = conexion.getConnection().prepareStatement(sql);
-	/*pst.setString(1, u.getUsername());
-        pst.setString(2, u.getNombre());
-        pst.setString(3, u.getApellidos());
-        pst.setString(4, u.getEmail());
-        pst.setString(5, u.getPassword());
-        pst.setString(6, pk);*/
+	pst.setString(1, c.getCedula());
+        pst.setString(2, c.getNombre());
+        pst.setString(3, c.getApellido());
+        pst.setString(4, c.getDireccion());
+        pst.setString(5, c.getTelefono());
+        pst.setString(6, c.getEmail());
+        pst.setString(7, cedula);
         this.lError = true;
 	if (conexion.Update(pst) > 0) {
             conexion.Commit();

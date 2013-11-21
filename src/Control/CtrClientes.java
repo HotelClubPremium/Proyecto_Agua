@@ -57,6 +57,20 @@ public class CtrClientes {
         
       
     }
+    
+     public String update(String cedula, Clientes c){
+         try {
+            conexion = new db();
+            ClientesDAO cDao= new ClientesDAO(conexion);
+            cDao.update(cedula,c);
+            return "datos actualizados Satisfactoriamente";
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrLecturaConsumos.class.getName()).log(Level.SEVERE, null, ex);
+            return ex.getMessage();
+        }
+         
+         
+     }
     private boolean esApellidoValido(String apellidos) {
         return apellidos.trim().length()>0;
     }
@@ -88,6 +102,8 @@ public class CtrClientes {
          
          
      }
+
+    
 }
 
     
