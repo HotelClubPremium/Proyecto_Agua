@@ -28,26 +28,28 @@ public class ConsumosDAO {
     public ConsumosDAO(db conexion) {
         this.setConexion(conexion);
     }
-     public ConsumosDAO(){
-        
+     public ConsumosDAO(){ 
     }
-    
-   /* public boolean insert(Consumos c) throws SQLException {
+     
+     
+     
+  /* insertar consumo para vivienda nueva*/  
+   public boolean insert(Consumos c) throws SQLException {
         //Insertar en el Sistema de Base de Datos
         boolean result = false;
-        String sql = "insert into Usuarios (UserName,Nombre,Apellidos,Email,Password) values (?,?,?,?,?)";
+        String sql = "insert into Usuarios (codigo_vivienda,direccion_vivienda,lectura_anterior,consumo_mes) values (?,?,?,?)";
         java.sql.PreparedStatement pst = conexion.getConnection().prepareStatement(sql);
-        pst.setString(1, c.getUsername());
-        pst.setString(2, c.getNombre());
-        pst.setString(3, c.getApellidos());
-        pst.setString(4, c.getEmail());
-        pst.setString(5, c.getPassword());
+        pst.setInt(1,c.getCodigo_vivienda());
+        pst.setString(2, c.getDireccion_vivienda());
+        pst.setInt(3, c.getLectura_anterior());
+        pst.setInt(4, c.getConsumo_mes());
+   
         if (pst.executeUpdate() > 0) {
             conexion.Commit();
             result = true;
         }
         return result;
-    } */
+    }
 
     public ArrayList<Consumos> getRecords() throws SQLException {
         ArrayList<Consumos> lst = new ArrayList<Consumos>();
