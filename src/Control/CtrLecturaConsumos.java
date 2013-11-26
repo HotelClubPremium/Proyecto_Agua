@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 
 public class CtrLecturaConsumos {
     db conexion;
+    
   /*  public String insert(Consumos c){   
         if (!esUsernameValido(c.getCodigo_vivienda())){
             return "Longitud de UserName inválido ";
