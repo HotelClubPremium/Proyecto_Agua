@@ -65,6 +65,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         btn_Buscar = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
         btn_Guardar = new javax.swing.JButton();
         btn_Cancelar = new javax.swing.JButton();
         btn_Salir = new javax.swing.JButton();
@@ -152,6 +153,14 @@ public class RegistrarClientes extends javax.swing.JFrame {
             }
         });
 
+        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resourse/Floppy-Small-icon.png"))); // NOI18N
+        eliminar.setText("eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -164,7 +173,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                     .addComponent(txtNombre)
                     .addComponent(txtApellido))
                 .addGap(28, 28, 28)
@@ -176,11 +185,13 @@ public class RegistrarClientes extends javax.swing.JFrame {
                             .addComponent(jLabel10))
                         .addGap(56, 56, 56)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                             .addComponent(txtEmail)
                             .addComponent(txtDireccion_C)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_Buscar)
+                        .addGap(40, 40, 40)
+                        .addComponent(eliminar)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -190,7 +201,8 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -419,6 +431,39 @@ public class RegistrarClientes extends javax.swing.JFrame {
         }           // TODO add your handling code here:
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+         if (txtCedula.getText().equals("") || txtNombre.getText().equals("")   ){
+             JOptionPane.showMessageDialog(null,"DIGITE CONSUMO ACTUAL  VIVIENDA");
+        }
+        else{
+        Clientes c = new Clientes();
+         /*Integer cons_capturado = Integer.parseInt(consumo_capturado.getText()); 
+         Integer lect_anterior=Integer.parseInt(lectura_anterior.getText());
+         Integer cons_mes = Integer.parseInt(consumo_mes.getText());*/
+         
+      
+          String cedula=txtCedula.getText();
+           
+          
+         
+         c.setCedula(txtCedula.getText());
+         String msg=crC.delete(cedula); 
+            /*c.setNombre(txtNombre.getText());
+            c.setApellido(txtApellido.getText());
+            c.setEmail(txtEmail.getText());
+            c.setDireccion(txtDireccion_C.getText());
+            c.setTelefono(txtTelefono.getText());*/
+            
+         /*Integer codigo = Integer.parseInt(codigo_vivienda.getText());
+        c.setLectura_anterior(lect_anterior);
+        c.setConsumo_mes(cons_mes);
+        String msg=CLC.update(codigo,c);*/
+        JOptionPane.showMessageDialog(this, msg);
+        limpiarcajas();
+        }           // TODO
+    }//GEN-LAST:event_eliminarActionPerformed
+
      void Ultimo(){
       //  ultimoregistro=crV.UltimoRegistro();
        // lb_Codigo.setText(String.valueOf(ultimoregistro));
@@ -467,6 +512,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Salir;
     private javax.swing.JButton btn_actualizar;
+    private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

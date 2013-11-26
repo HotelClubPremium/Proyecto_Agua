@@ -65,7 +65,7 @@ public class CtrClientes {
             cDao.update(cedula,c);
             return "datos actualizados Satisfactoriamente";
         } catch (SQLException ex) {
-            Logger.getLogger(CtrLecturaConsumos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CtrClientes.class.getName()).log(Level.SEVERE, null, ex);
             return ex.getMessage();
         }
          
@@ -102,6 +102,23 @@ public class CtrClientes {
          
          
      }
+       
+       
+       public String delete(String cedula){
+         try {
+            conexion = new db();
+            ClientesDAO cDao= new ClientesDAO(conexion);
+            cDao.delete(cedula);
+            return "datos eliminados Satisfactoriamente";
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrClientes.class.getName()).log(Level.SEVERE, null, ex);
+            return ex.getMessage();
+        }
+         
+         
+     }
+
+    
 
     
 }

@@ -131,11 +131,11 @@ public class ClientesDAO {
 	}
     }
 
-    public void delete(String pk) throws SQLException {
+    public void delete(String cedula) throws SQLException {
         //eleminar objeto de la lista
-        String sql = "delete from Usuarios where username=?";
+        String sql = "delete from clientes where cedula=?";
 	java.sql.PreparedStatement pst = conexion.getConnection().prepareStatement(sql);
-	pst.setString(1,pk);
+	pst.setString(1,cedula);
         this.lError = true;
 	if (conexion.Update(pst) > 0) {
             conexion.Commit();
@@ -155,5 +155,7 @@ public class ClientesDAO {
         c.setEmail(rs.getString("email"));
         return c;
     }
+
+   
 }
 

@@ -172,7 +172,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtCedula" alignment="0" pref="210" max="32767" attributes="0"/>
+                      <Component id="txtCedula" alignment="0" pref="216" max="32767" attributes="0"/>
                       <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtApellido" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -186,13 +186,15 @@
                           </Group>
                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtTelefono" pref="211" max="32767" attributes="0"/>
+                              <Component id="txtTelefono" pref="227" max="32767" attributes="0"/>
                               <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtDireccion_C" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="btn_Buscar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="eliminar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -207,6 +209,7 @@
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCedula" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_Buscar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="eliminar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="21" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -301,6 +304,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_BuscarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="eliminar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Resourse/Floppy-Small-icon.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="eliminar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
