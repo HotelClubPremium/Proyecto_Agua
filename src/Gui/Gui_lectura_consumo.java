@@ -10,9 +10,12 @@ import Modelos.ConsumosDAO;
 import Modelos.Usuarios;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -105,6 +108,14 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
         });
 
         codigo_vivienda.setName("codigo_vivienda"); // NOI18N
+        codigo_vivienda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                codigo_viviendaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                codigo_viviendaKeyTyped(evt);
+            }
+        });
 
         consumo_mes.setEditable(false);
         consumo_mes.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
@@ -176,6 +187,12 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizarActionPerformed(evt);
+            }
+        });
+
+        consumo_capturado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                consumo_capturadoKeyTyped(evt);
             }
         });
 
@@ -280,6 +297,28 @@ setLocation((pantalla.width/2-(frame.width/2)),pantalla.height/2-(frame.height/2
         }                                      
         // TODO add your handling code here:
     }//GEN-LAST:event_ActualizarActionPerformed
+
+    
+    
+    private void codigo_viviendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigo_viviendaKeyPressed
+
+    }//GEN-LAST:event_codigo_viviendaKeyPressed
+
+  
+    private void codigo_viviendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigo_viviendaKeyTyped
+       
+     char c =evt.getKeyChar();
+       if (c<'0' || c>'9'){
+           evt.consume();   
+       }
+    }//GEN-LAST:event_codigo_viviendaKeyTyped
+
+    private void consumo_capturadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_consumo_capturadoKeyTyped
+       char c =evt.getKeyChar();
+       if (c<'0' || c>'9'){
+           evt.consume();   
+       }
+    }//GEN-LAST:event_consumo_capturadoKeyTyped
 
     /**
       * @param args the command line arguments

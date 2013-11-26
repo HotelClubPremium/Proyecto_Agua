@@ -202,6 +202,10 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="codigo_vivienda" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="codigo_viviendaKeyPressed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="codigo_viviendaKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="consumo_mes">
               <Properties>
@@ -247,6 +251,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="consumo_capturado">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="consumo_capturadoKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
