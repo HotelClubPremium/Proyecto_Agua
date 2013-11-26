@@ -22,15 +22,25 @@ private ArrayList<Viviendas> lstVivienda = new ArrayList<>();
 private Integer Ultimo;
 
  db conexion;
-public  void todas_vivienda () throws SQLException {
+public  void liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLException {
              ViviendasDAO vDao = new ViviendasDAO();
               
            lstVivienda= vDao.getRecords();
               for(int i=0;i<lstVivienda.size();i++){
-                
-            lstVivienda.get(i).getCodigo_vivienda();
-            lstVivienda.get(i).getCedula();
-                return true;
+                  /*falta q reciba el id de barrio a liquidar   */
+                    if (  lstVivienda.get(i).getId_barrio().equals(barrio_liquidar)) {
+                        
+                          lstVivienda.get(i).getCodigo();
+                          lstVivienda.get(i).getEstrato();
+                /* consigo el codigo y el estrato de la cada vivienda*/ 
+            
+                        }    
+          
+            
+            
+            
+            
+            
             }
            
 }

@@ -61,7 +61,7 @@ public class ViviendasDAO {
         pst.setString(1, v.getCodigo());
         pst.setString(2, v.getDireccion());
         pst.setString(3, v.getEstrato());
-        pst.setString(4, v.getBarrio());
+        pst.setInt(4, v.getId_barrio());
         
         
         if (pst.executeUpdate() > 0) {
@@ -135,7 +135,7 @@ public class ViviendasDAO {
        v.setCodigo(rs.getString("codigo"));
         v.setDireccion(rs.getString("direccion"));
         v.setEstrato(rs.getString("estrato"));
-        v.setBarrio(rs.getString("barrio"));
+        v.setId_barrio(rs.getInt("barrio"));
        
         return v;
     }

@@ -9,7 +9,7 @@ public class Viviendas {
    private String Estrato;
    private String Cliente;
    private String Direccion;
-   private String Barrio;
+   private Integer Id_barrio;
    private Integer Deuda;
    private Integer Descuento;
    
@@ -19,7 +19,7 @@ public class Viviendas {
        this.Direccion=Direccion;
        this.Estrato=Estrato;
        this.Cliente=Cliente;
-       this.Barrio=Barrio;
+       this.Id_barrio=Id_barrio;
        this.Deuda=Deuda;
        this.Descuento=Descuento;
        
@@ -60,12 +60,12 @@ public class Viviendas {
         this.Direccion = Direccion;
     }
 
-    public String getBarrio() {
-        return Barrio;
+    public Integer getId_barrio() {
+        return Id_barrio;
     }
 
-    public void setBarrio(String Barrio) {
-        this.Barrio = Barrio;
+    public void setId_barrio(Integer Id_barrio) {
+        this.Id_barrio = Id_barrio;
     }
 
     public Integer getDeuda() {
@@ -82,6 +82,10 @@ public class Viviendas {
 
     public void setDescuento(Integer Descuento) {
         this.Descuento = Descuento;
+    }
+
+    public void getCodigo_vivienda() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
    

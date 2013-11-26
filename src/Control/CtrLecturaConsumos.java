@@ -51,15 +51,7 @@ public class CtrLecturaConsumos {
          
          
      }
-    private boolean esApellidoValido(String apellidos) {
-        return apellidos.trim().length()>0;
-    }
-    private boolean esNombreValido(String nombre) {
-        return nombre.trim().length()>0;
-    }
-    public boolean esUsernameValido(String userName) {
-        return userName.trim().length()>4 && userName.trim().length()<8;
-    }
+    
     
     
      public Consumos getPk (Integer codigo_vivienda){
