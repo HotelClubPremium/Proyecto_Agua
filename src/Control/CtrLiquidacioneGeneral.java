@@ -102,4 +102,8 @@ public String  actualizar_conceptos_basicos( String  codigo_vivienda,  int cargo
      return msg;
        
 }
+
+    public void liquidacion_por_barrio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
