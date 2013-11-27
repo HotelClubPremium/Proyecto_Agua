@@ -242,7 +242,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         if(s.getCargo().equals("Administrador")){
-        new Reg_Conceptos_Admi().setVisible(true);
+        new RegistrarConceptosAdmin().setVisible(true);
         this.dispose(); 
        }
        else{

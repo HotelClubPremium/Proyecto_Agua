@@ -37,7 +37,7 @@ public class CtrPagos {
             return 0;
         }
         else{
-            ca=caDao.Buscar(Estrato);
+           // ca=caDao.Buscar(Estrato);
             Consumo=c.getConsumo_mes();
             Precio=ca.getPrecio();
             Total=Consumo*Precio;

@@ -84,11 +84,11 @@ public class ViviendasDAO {
         return lst;
     }
 
-    public Viviendas getPk(String codigo) throws SQLException {
+    public Viviendas getPk(String  codigo) throws SQLException {
         Viviendas v=null;
         String sql = "select * from viviendas where codigo=? ";
         java.sql.PreparedStatement pst = conexion.getConnection().prepareStatement(sql);
-        pst.setString(1, codigo);
+        pst.setString (1, codigo);
         ResultSet rs = conexion.Query(pst);
         lError = true;
         if (rs.next()) {

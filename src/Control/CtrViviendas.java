@@ -90,7 +90,7 @@ private Integer Ultimo;
          try {
               
             conexion = new db();
-            Viviendas v= new Viviendas();
+            Viviendas v = new Viviendas();
            ViviendasDAO vDao= new ViviendasDAO(conexion);
            v= vDao.getPk(codigo);
             return v;

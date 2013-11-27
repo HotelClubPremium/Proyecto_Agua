@@ -6,6 +6,10 @@ package Control;
 
 import Modelos.Conceptos_Admin;
 import Modelos.Conceptos_AdminDAO;
+import Modelos.db;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,11 +17,49 @@ import Modelos.Conceptos_AdminDAO;
  */
 public class ctrConceptos_adm {
     
-    public String Guardar(Conceptos_Admin u){
-       Conceptos_AdminDAO UDao= new Conceptos_AdminDAO();
-        UDao.insert(u);
-        return "Guardado Satisfactoriamente";
+    db conexion;
+    Conceptos_Admin c= new Conceptos_Admin();
+    
+    
+    
+    public String Guardar(Conceptos_Admin u) {
         
+        try {
+            conexion = new db();
+            Conceptos_AdminDAO cDao= new Conceptos_AdminDAO(conexion);
+            cDao.insert(u);
+            return "Guardado Satisfactoriamente";
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrViviendas.class.getName()).log(Level.SEVERE, null, ex);
+            return ex.getMessage();
+        }
+    } 
+    
+    public Conceptos_Admin getPk (String Estrato){
+         try {
+              
+            conexion = new db();
+            Conceptos_AdminDAO cDao= new Conceptos_AdminDAO(conexion);
+            c= cDao.getPk(Estrato);
+            return c ;
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrLecturaConsumos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+            
+        }
+      }
+    
+     public String Update(String Estrato,Conceptos_Admin u) {
+        
+        try {
+            conexion = new db();
+            Conceptos_AdminDAO cDao= new Conceptos_AdminDAO(conexion);
+            cDao.update(Estrato,u);
+            return "Guardado Satisfactoriamente";
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrViviendas.class.getName()).log(Level.SEVERE, null, ex);
+            return ex.getMessage();
+        }
     } 
     
 }

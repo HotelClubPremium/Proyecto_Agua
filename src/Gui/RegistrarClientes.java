@@ -322,7 +322,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
          
             v.setDireccion(txtDireccion_V.getText());
             v.setEstrato(txtEstrato.getText());
-            v.setBarrio(txtBarrio.getText());
+            v.setId_barrio(Integer.parseInt(txtBarrio.getText()));
             v.setDeuda(0);
             v.setDescuento(0);
              msg=crV.insert(v);
@@ -380,7 +380,8 @@ public class RegistrarClientes extends javax.swing.JFrame {
               txtCodigo.setText(v.getCodigo());
             txtDireccion_V.setText(v.getDireccion());
             txtEstrato.setText(v.getEstrato());
-            txtBarrio.setText(v.getBarrio());}
+            txtBarrio.setText(v.getId_barrio());
+            }
             
             
             if ( v == null ){
@@ -392,7 +393,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
               txtCodigo.setText(v.getCodigo());
             txtDireccion_V.setText(v.getDireccion());
             txtEstrato.setText(v.getEstrato());
-            txtBarrio.setText(v.getBarrio());}
+            txtBarrio.setText(v.getId_barrio());}
             
             
                         

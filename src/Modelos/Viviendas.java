@@ -14,7 +14,7 @@ public class Viviendas {
    private Integer Descuento;
    
    
-   public Viviendas(String Codigo,String Direccion,String Estrato,String Cliente,String Barrio,Integer Deuda,Integer Descuento){
+   public Viviendas(String Codigo,String Direccion,String Estrato,String Cliente,Integer Id_barrio,Integer Deuda,Integer Descuento){
        this.Codigo=Codigo;
        this.Direccion=Direccion;
        this.Estrato=Estrato;

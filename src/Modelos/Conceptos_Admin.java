@@ -12,6 +12,8 @@ public class Conceptos_Admin {
     
     private String Estrato;
     private Integer Precio;
+    private Integer Reconexion;
+    private Integer Descuento;
     
     public Conceptos_Admin(String Estrato,Integer Precio){
         this.Estrato=Estrato;
@@ -35,6 +37,22 @@ public class Conceptos_Admin {
 
     public void setPrecio(Integer Precio) {
         this.Precio = Precio;
+    }
+
+    public Integer getReconexion() {
+        return Reconexion;
+    }
+
+    public void setReconexion(Integer Reconexion) {
+        this.Reconexion = Reconexion;
+    }
+
+    public Integer getDescuento() {
+        return Descuento;
+    }
+
+    public void setDescuento(Integer Descuento) {
+        this.Descuento = Descuento;
     }
     
     

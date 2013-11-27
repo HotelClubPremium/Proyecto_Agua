@@ -43,8 +43,8 @@ public class Sistema {
         c=new Clientes("1065","Carlos","julio","calle 1","5869575","cj@hotmail.com");
         lstClientes.add(c);
         
-        v=new Viviendas("1000","calle 14 #17","1","1065","Sabana",0,0);
-        lstViviendas.add(v);
+     //   v=new Viviendas("1000","calle 14 #17","1","1065","Sabana",0,0);
+        //lstViviendas.add(v);
         }
       
       public  ArrayList<Usuarios> getLstUsuarios (){
