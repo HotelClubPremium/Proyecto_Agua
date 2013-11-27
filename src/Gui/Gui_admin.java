@@ -4,12 +4,20 @@
  */
 package Gui;
 
+import Control.CtrLiquidacioneGeneral;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Miguel
  */
 public class Gui_admin extends javax.swing.JFrame {
-
+ CtrLiquidacioneGeneral  cLG = new   CtrLiquidacioneGeneral();
+ 
+    
+    
     /**
      * Creates new form Gui_admin
      */
@@ -45,17 +53,17 @@ public class Gui_admin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(225, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(216, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(261, 261, 261))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(223, Short.MAX_VALUE)
+                .addContainerGap(298, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(139, 139, 139))
+                .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -79,7 +87,12 @@ public class Gui_admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+     try {
+         cLG.liquidacion_por_barrio (2);
+     } catch (SQLException ex) {
+         Logger.getLogger(Gui_admin.class.getName()).log(Level.SEVERE, null, ex);
+     }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

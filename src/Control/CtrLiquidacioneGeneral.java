@@ -41,11 +41,12 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
 
  db conexion;
 public  String  liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLException {
-
+ JOptionPane.showMessageDialog(null,"entro a liquidacoin por barrio");
            ViviendasDAO vDao = new ViviendasDAO();   
            lstVivienda= vDao.getRecords();
            
               for(int i=0;i<lstVivienda.size();i++){
+                  JOptionPane.showMessageDialog(null,"dentro del for  por barrio");
                   /*falta q reciba el id de barrio a liquidar   */
                     if (  lstVivienda.get(i).getId_barrio().equals(barrio_liquidar)) {
                        /* consigo el codigo y el estrato de la cada vivienda*/ 
@@ -102,8 +103,4 @@ public String  actualizar_conceptos_basicos( String  codigo_vivienda,  int cargo
      return msg;
        
 }
-
-    public void liquidacion_por_barrio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

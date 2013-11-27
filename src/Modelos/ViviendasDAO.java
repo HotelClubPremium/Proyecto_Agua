@@ -4,6 +4,7 @@ package Modelos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ViviendasDAO {
     /*String msg;
@@ -74,7 +75,8 @@ public class ViviendasDAO {
     public ArrayList<Viviendas> getRecords() throws SQLException {
         ArrayList<Viviendas> lst = new ArrayList<Viviendas>();
         Viviendas v =null;
-        String sql = "select * from Usuarios ";
+        String sql = "select * from viviendas ";
+        JOptionPane.showMessageDialog(null,"entro a getRecords");
         ResultSet rs = conexion.Query(sql);
         while (rs.next()) {
             v = MapearObjeto(rs);
@@ -132,7 +134,7 @@ public class ViviendasDAO {
 
     private Viviendas MapearObjeto(ResultSet rs) throws SQLException {
         Viviendas v = new Viviendas();
-       v.setCodigo(rs.getString("codigo"));
+       v.setCodigo(rs.getString("codigo_vivienda"));
         v.setDireccion(rs.getString("direccion"));
         v.setEstrato(rs.getString("estrato"));
         v.setId_barrio(rs.getInt("barrio"));

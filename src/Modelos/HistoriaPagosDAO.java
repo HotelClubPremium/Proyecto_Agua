@@ -49,7 +49,7 @@ public class HistoriaPagosDAO {
         }
         return result;
     }
-    public ArrayList<HistorialPagos>getRecords(){
+    public ArrayList<HistorialPagos>   getRecords(){
     return s.getLstHistorialPagos();
     }
    
