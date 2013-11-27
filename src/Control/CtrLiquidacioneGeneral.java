@@ -41,12 +41,10 @@ CtrLecturaConsumos CLC= new CtrLecturaConsumos();
 
  db conexion;
 public  String  liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLException {
- JOptionPane.showMessageDialog(null,"entro a liquidacoin por barrio");
            ViviendasDAO vDao = new ViviendasDAO();   
            lstVivienda= vDao.getRecords();
            
               for(int i=0;i<lstVivienda.size();i++){
-                  JOptionPane.showMessageDialog(null,"dentro del for  por barrio");
                   /*falta q reciba el id de barrio a liquidar   */
                     if (  lstVivienda.get(i).getId_barrio().equals(barrio_liquidar)) {
                        /* consigo el codigo y el estrato de la cada vivienda*/ 
@@ -55,6 +53,7 @@ public  String  liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLExc
                              /* consigo el consumo mes de esa vivienda */
                                consumo = consumo_vivienda(Codigo_vivienda);
                              /* consigo el valor por litro para ese estrato */
+                                JOptionPane.showMessageDialog(null," consigio vivienda barrio 2, consumo:"+consumo +"  codigo_vi "+ Codigo_vivienda);                 
                           valor_litro   =  valor_litro_estrato(Estrato);
                           cargo_mes=  valor_litro *  consumo;
 /*  ya tengo el codigo de vivienda y el nuevo gargo mes.......luego actualizo en conceptos basicos de esa vivienda*/
@@ -80,7 +79,10 @@ public Integer valor_litro_estrato (String estrato){
                Conceptos_Admin c=new Conceptos_Admin();
                Conceptos_AdminDAO cDAO = new Conceptos_AdminDAO();
                c  = clCA.getPk(estrato);
+         JOptionPane.showMessageDialog(null,"DIGITE CONSUMdfjhjdgjgO "+c.getPrecio());
+
              return c.getPrecio();
+             
 }
 
 

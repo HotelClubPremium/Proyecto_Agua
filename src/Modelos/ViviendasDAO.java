@@ -75,8 +75,8 @@ public class ViviendasDAO {
     public ArrayList<Viviendas> getRecords() throws SQLException {
         ArrayList<Viviendas> lst = new ArrayList<Viviendas>();
         Viviendas v =null;
-        String sql = "select * from viviendas ";
-        JOptionPane.showMessageDialog(null,"entro a getRecords");
+        String sql = "select * from viviendas";
+        conexion = new db();
         ResultSet rs = conexion.Query(sql);
         while (rs.next()) {
             v = MapearObjeto(rs);

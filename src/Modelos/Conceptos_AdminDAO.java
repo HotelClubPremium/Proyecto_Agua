@@ -69,8 +69,7 @@ public class Conceptos_AdminDAO {
     
     
      public Conceptos_Admin getPk(String Estrato) throws SQLException {
-      
-        Conceptos_Admin c =null;
+          Conceptos_Admin c =null;
         String sql = "select * from conceptos_admin where Estrato=? ";
         java.sql.PreparedStatement pst = conexion.getConnection().prepareStatement(sql);
         pst.setString(1,Estrato);        
@@ -89,7 +88,8 @@ public class Conceptos_AdminDAO {
         c.setEstrato(rs.getString("Estrato"));      
         c.setPrecio(rs.getInt("valor_litros"));
         c.setReconexion(rs.getInt("reconexion"));
-        c.setDescuento(rs.getInt("descuento"));
+        c.setDescuento(rs.getInt("descuento"));        
+
         return c;
     }
     

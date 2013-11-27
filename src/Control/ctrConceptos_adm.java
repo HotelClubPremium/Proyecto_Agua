@@ -10,6 +10,7 @@ import Modelos.db;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +41,10 @@ public class ctrConceptos_adm {
               
             conexion = new db();
             Conceptos_AdminDAO cDao= new Conceptos_AdminDAO(conexion);
+            Conceptos_Admin c= new Conceptos_Admin();
+            
             c= cDao.getPk(Estrato);
+           
             return c ;
         } catch (SQLException ex) {
             Logger.getLogger(CtrLecturaConsumos.class.getName()).log(Level.SEVERE, null, ex);
