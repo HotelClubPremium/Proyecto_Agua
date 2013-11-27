@@ -40,7 +40,7 @@ private String Estrato;
 CtrLecturaConsumos CLC= new CtrLecturaConsumos();
 
  db conexion;
-public  void liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLException {
+public  String  liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLException {
 
            ViviendasDAO vDao = new ViviendasDAO();   
            lstVivienda= vDao.getRecords();
@@ -57,11 +57,12 @@ public  void liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLExcept
                           valor_litro   =  valor_litro_estrato(Estrato);
                           cargo_mes=  valor_litro *  consumo;
 /*  ya tengo el codigo de vivienda y el nuevo gargo mes.......luego actualizo en conceptos basicos de esa vivienda*/
-                           actualizar_conceptos_basicos(codigo_vivienda,cargo_mes );
+                    return actualizar_conceptos_basicos(Integer.toString(Codigo_vivienda),cargo_mes );
                            
                         }    /* fin del if */
           
             }
+        return null;
            
 }
 /* buscar el consumo del mes de esa vivienda y retornar el valor consumid */
@@ -82,11 +83,11 @@ public Integer valor_litro_estrato (String estrato){
 }
 
 
-public void  actualizar_conceptos_basicos( String  codigo_vivienda,  int cargo_mes ){
+public String  actualizar_conceptos_basicos( String  codigo_vivienda,  int cargo_mes ){
     
       Conceptos_Basicos cb= new Conceptos_Basicos();
       Conceptos_BasicosDAO cDao= new Conceptos_BasicosDAO();
-       cb  = cCB .getPk(codigo_vivienda);
+      cb  = cCB .getPk(codigo_vivienda);
        
        deuda= cb.getTotal();
        nuevo_total= (deuda+ cargo_mes + cb.getReconexion()-cb.getDescuento());
@@ -97,9 +98,8 @@ public void  actualizar_conceptos_basicos( String  codigo_vivienda,  int cargo_m
      cb.setReconexion(consumo);
      cb.setTotal(nuevo_total);
      
-      String msg = cCB .Update(codigo_vivienda,cb);
+     String msg = cCB .Update(codigo_vivienda,cb);
+     return msg;
        
 }
-     
-
 }
