@@ -53,8 +53,6 @@ public  void liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLExcept
                           cargo_mes=  valor_litro *  consumo;
 /*  ya tengo el codigo de vivienda y el nuevo gargo mes.......luego actualizo en conceptos basicos de esa vivienda*/
                           
-                        
-                          
                         }    /* fin del if */
           
             }
@@ -75,7 +73,11 @@ public Integer valor_litro_estrato (String estrato){
                Conceptos_AdminDAO cDAO = new Conceptos_AdminDAO();
                c  = clCA.getPk(estrato);
              return c.getPrecio();
-             
+}
+
+
+public actualizar_conceptos_basicos( int codigo_vivienda,  int cargo_mes ){
+    
 }
 
 
