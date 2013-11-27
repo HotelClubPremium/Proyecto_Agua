@@ -6,6 +6,8 @@ package Control;
 
 import Modelos.Conceptos_Admin;
 import Modelos.Conceptos_AdminDAO;
+import Modelos.Conceptos_Basicos;
+import Modelos.Conceptos_BasicosDAO;
 import Modelos.Consumos;
 import Modelos.ConsumosDAO;
 import Modelos.Viviendas;
@@ -24,12 +26,15 @@ import javax.swing.JOptionPane;
  */
 public class CtrLiquidacioneGeneral {
     ctrConceptos_adm  clCA = new ctrConceptos_adm();
+    CtrConceptos_Basicos cCB = new CtrConceptos_Basicos();
     
 private ArrayList<Viviendas> lstVivienda = new ArrayList<>();
 private Integer Ultimo;
 private Integer Codigo_vivienda;
 private Integer consumo;
 private Integer valor_litro;
+private Integer deuda;
+private Integer nuevo_total;
 private Integer cargo_mes;
 private String Estrato;
 CtrLecturaConsumos CLC= new CtrLecturaConsumos();
@@ -52,7 +57,8 @@ public  void liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLExcept
                           valor_litro   =  valor_litro_estrato(Estrato);
                           cargo_mes=  valor_litro *  consumo;
 /*  ya tengo el codigo de vivienda y el nuevo gargo mes.......luego actualizo en conceptos basicos de esa vivienda*/
-                          
+                           actualizar_conceptos_basicos(codigo_vivienda,cargo_mes );
+                           
                         }    /* fin del if */
           
             }
@@ -76,62 +82,24 @@ public Integer valor_litro_estrato (String estrato){
 }
 
 
-public actualizar_conceptos_basicos( int codigo_vivienda,  int cargo_mes ){
+public void  actualizar_conceptos_basicos( String  codigo_vivienda,  int cargo_mes ){
     
+      Conceptos_Basicos cb= new Conceptos_Basicos();
+      Conceptos_BasicosDAO cDao= new Conceptos_BasicosDAO();
+       cb  = cCB .getPk(codigo_vivienda);
+       
+       deuda= cb.getTotal();
+       nuevo_total= (deuda+ cargo_mes + cb.getReconexion()-cb.getDescuento());
+       
+     cb.setDeuda(deuda);
+     cb.setCargo_Mensual(cargo_mes);
+     cb.setDescuento(0);
+     cb.setReconexion(consumo);
+     cb.setTotal(nuevo_total);
+     
+      String msg = cCB .Update(codigo_vivienda,cb);
+       
 }
-
-
      
-     
-     public Integer UltimoRegistro(){
-         try{
-             ViviendasDAO vDao=new ViviendasDAO();
-             lstVivienda=vDao.getRecords();
-             for(int i=0;i<lstVivienda.size();i++){
-               Ultimo=Integer.parseInt(lstVivienda.get(i).getCodigo());
-           }
-          Ultimo=Ultimo+1;
-          
-         return Ultimo;
-         }
-         catch(Exception e){
-             return 1000;
-         } 
-         
-     }
-    
-    
-    public String insert(Viviendas v){   
-        try {
-            conexion = new db();
-            ViviendasDAO VDao= new ViviendasDAO(conexion);
-            VDao.insert(v);
-        
-            return "Guardad ";
-        } catch (SQLException ex) {
-            Logger.getLogger(CtrLiquidacioneGeneral.class.getName()).log(Level.SEVERE, null, ex);
-            return ex.getMessage();
-        }
-        
-        
-        
-    }
-    
-      public Viviendas getPk(String codigo){
-         try {
-              
-            conexion = new db();
-            Viviendas v= new Viviendas();
-           ViviendasDAO vDao= new ViviendasDAO(conexion);
-           v= vDao.getPk(codigo);
-            return v;
-        } catch (SQLException ex) {
-            Logger.getLogger(CtrLiquidacioneGeneral.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-            
-        }
-         
-         
-     } 
 
 }
