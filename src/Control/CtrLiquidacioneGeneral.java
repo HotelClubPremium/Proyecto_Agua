@@ -30,6 +30,7 @@ private Integer Ultimo;
 private Integer Codigo_vivienda;
 private Integer consumo;
 private Integer valor_litro;
+private Integer cargo_mes;
 private String Estrato;
 CtrLecturaConsumos CLC= new CtrLecturaConsumos();
 
@@ -49,7 +50,11 @@ public  void liquidacion_por_barrio (Integer barrio_liquidar  ) throws SQLExcept
                                consumo = consumo_vivienda(Codigo_vivienda);
                              /* consigo el valor por litro para ese estrato */
                           valor_litro   =  valor_litro_estrato(Estrato);
-                       
+                          cargo_mes=  valor_litro *  consumo;
+/*  ya tengo el codigo de vivienda y el nuevo gargo mes.......luego actualizo en conceptos basicos de esa vivienda*/
+                          
+                        
+                          
                         }    /* fin del if */
           
             }
